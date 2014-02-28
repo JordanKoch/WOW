@@ -12,7 +12,6 @@
       _ref = replacement || {};
       for (key in _ref) {
         value = _ref[key];
-        //If the type of key is an object, .....I don't know
         if (typeof result[key] === "object") {
           result[key] = extend(result[key], value);
         } else {
@@ -31,7 +30,6 @@
     };
 
     function WOW(options) {
-      // If options art null, options equal open dict?
       if (options == null) {
         options = {};
       }
@@ -44,7 +42,6 @@
 
     WOW.prototype.init = function() {
       var _ref;
-      //If _ref is interactive and complete, return this.start(function); Else, return document.addEventListener
       if ((_ref = document.readyState) === "interactive" || _ref === "complete") {
         return this.start();
       } else {
@@ -56,7 +53,6 @@
       var box, _i, _len, _ref;
       this.element = window.document.documentElement;
       this.boxes = this.element.getElementsByClassName(this.config.boxClass);
-      //If blegh I don't know
       if (this.boxes.length) {
         _ref = this.boxes;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -72,7 +68,6 @@
     WOW.prototype.stop = function() {
       window.removeEventListener('scroll', this.scrollHandler, false);
       window.removeEventListener('resize', this.scrollHandler, false);
-      //If this.interval does not equal null, return clearInterval(this.interval)
       if (this.interval != null) {
         return clearInterval(this.interval);
       }
@@ -94,15 +89,12 @@
     WOW.prototype.customStyle = function(hidden, duration, delay, iteration) {
       var style;
       style = hidden ? "visibility: hidden; -webkit-animation-name: none; -moz-animation-name: none; animation-name: none;" : "visibility: visible;";
-      //Guard statement for duration of animation
       if (duration) {
         style += "-webkit-animation-duration: " + duration + "; -moz-animation-duration: " + duration + "; animation-duration: " + duration + ";";
       }
-      //Gaurd statement for delay of animation
       if (delay) {
         style += "-webkit-animation-delay: " + delay + "; -moz-animation-delay: " + delay + "; animation-delay: " + delay + ";";
       }
-      //Guard statement for iteration of animation
       if (iteration) {
         style += "-webkit-animation-iteration-count: " + iteration + "; -moz-animation-iteration-count: " + iteration + "; animation-iteration-count: " + iteration + ";";
       }
@@ -115,7 +107,6 @@
 
     WOW.prototype.scrollCallback = function() {
       var box;
-      //If scrolled, animation plays?
       if (this.scrolled) {
         this.scrolled = false;
         this.boxes = (function() {
